@@ -1,0 +1,14 @@
+{
+  "folders": [
+    {
+      "name": "prueba1",
+      "path": "C:\\desarrollo_ia\\prueba1"
+    }
+  ],
+  "settings": {
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "explorer.confirmDelete": false,
+    "workbench.editor.enablePreview": false
+  }
+}
