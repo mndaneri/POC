@@ -2,5 +2,11 @@
   "files.autoSave": "afterDelay",
   "files.autoSaveDelay": 1000,
   "explorer.confirmDelete": false,
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": false,
+  "githubPullRequests.remotes": [
+    {
+      "path": ".",
+      "remoteURL": "https://github.com/mndaneri/POC.git"
+    }
+  ]
 }
