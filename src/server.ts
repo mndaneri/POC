@@ -1,9 +1,15 @@
 import express from 'express';
+import indexRouter from './routes/index';
 import healthRouter from './routes/health';
+import versionRouter from './routes/version';
+import readyRouter from './routes/ready';
 
 const app = express();
 
+app.use('/', indexRouter);
 app.use('/', healthRouter);
+app.use('/', versionRouter);
+app.use('/', readyRouter);
 
 const PORT = process.env.PORT || 3000;
 

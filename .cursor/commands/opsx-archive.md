@@ -137,7 +137,14 @@ Archive a completed change in the experimental workflow.
    mv "<changeRoot>" "<planningHome.changesDir>/archive/<target-name>"
    ```
 
-6. **Display summary**
+6. **Record in MemPalace (memory hook)**
+
+   After the archive move succeeds, persist the decision for cross-session recall:
+   - Call `mempalace_kg_add(subject="<change-name>", predicate="archived", object="<target-name>", valid_from="<YYYY-MM-DD>")`.
+   - Call `mempalace_diary_write(agent_name="<agent>", entry="ARCHIVE|<change-name>|<schema>|<YYYY-MM-DD>|✓")`.
+   - If the MemPalace MCP server is unavailable or the calls fail, skip silently — never block the archive.
+
+7. **Display summary**
 
    Show archive completion summary including:
    - Change name

@@ -1,32 +1,20 @@
 schema: spec-driven
 
-# Project context (optional)
-# This is shown to AI when creating artifacts.
-# Add your tech stack, conventions, style guides, domain knowledge, etc.
-# Example:
-#   context: |
-#     Tech stack: TypeScript, React, Node.js
-#     We use conventional commits
-#     Domain: e-commerce platform
+# Project context — shown to AI when creating artifacts.
+context: |
+  Tech stack: TypeScript, Node.js, Express, tsx (dev runner), vitest (tests)
+  Language: TypeScript strict mode, ESM modules
+  Conventions: kebab-case filenames, camelCase identifiers
+  Testing: vitest with supertest for API tests
+  Domain: AI agent workflow orchestration (Superpowers + OpenSpec + MemPalace)
+  Repo size: ~20 source files — use native search (ripgrep/glob), no RAG needed
 
-# Per-artifact rules (optional)
-# Add custom rules for specific artifacts.
-# Example:
-#   rules:
-#     proposal:
-#       - Keep proposals under 500 words
-#       - Always include a "Non-goals" section
-#     tasks:
-#       - Break tasks into chunks of max 2 hours
-
-# Per-operation guidance (optional)
-# Add advisory guidance for how apply and archive work should be conducted.
-# This is separate from artifact rules above.
-# Example:
-#   operations:
-#     apply:
-#       guidance:
-#         - Keep test summaries concise
-#     archive:
-#       guidance:
-#         - Summarize the archive outcome before finishing
+# Per-operation guidance
+operations:
+  apply:
+    guidance:
+      - Run `npx tsx --test tests/*.test.ts` after each completed task to verify
+  archive:
+    guidance:
+      - After archiving, call mempalace_kg_add to record the decision (subject=change-name, predicate=archived, object=target-name)
+      - Call mempalace_diary_write to log the session outcome in AAAK format

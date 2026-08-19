@@ -10,7 +10,8 @@
     "dev": "nodemon --watch src --ext ts --exec ts-node src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "test": "jest --verbose --runInBand --forceExit --passWithNoTests"
+    "test": "jest --verbose --runInBand --forceExit --passWithNoTests",
+    "generate-tutorial": "ts-node src/generate-sdd-superpowers-tutorial.ts"
   },
   "jest": {
     "preset": "ts-jest",
@@ -25,6 +26,7 @@
   "keywords": [],
   "type": "commonjs",
   "dependencies": {
+    "docx": "^9.7.1",
     "express": "^5.2.1"
   },
   "devDependencies": {
