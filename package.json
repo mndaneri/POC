@@ -11,6 +11,10 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "test": "jest --verbose --runInBand --forceExit --passWithNoTests",
+    "rag:index": "tsx src/rag/cli.ts index",
+    "rag:query": "tsx src/rag/cli.ts query",
+    "rag:chat": "tsx src/rag/cli.ts chat",
+    "rag:mcp": "tsx src/rag/server.ts",
     "generate-tutorial": "ts-node src/generate-sdd-superpowers-tutorial.ts"
   },
   "jest": {
@@ -39,6 +43,7 @@
     "supertest": "^7.2.2",
     "ts-jest": "^29.4.12",
     "ts-node": "^10.9.2",
+    "tsx": "^4.23.12",
     "typescript": "^5.9.3"
   }
 }

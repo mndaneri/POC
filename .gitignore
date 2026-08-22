@@ -25,5 +25,8 @@ npm-debug.log*
 # Coverage
 coverage/
 
+# RAG index (derivable; se regenera con `npm run rag:index`)
+.rag/
+
 # Temp files
 _tmp_*.md
