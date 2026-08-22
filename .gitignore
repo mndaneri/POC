@@ -30,3 +30,16 @@ coverage/
 
 # Temp files
 _tmp_*.md
+
+# Vendored third-party tool (dependencia instalable, NO fuente del proyecto)
+skillspector/
+
+# Outputs de auditoría generados (regenerables con skillspector)
+skillspector-reports/
+
+# WIP tutorial stream (aún no funciona — excluido hasta completar)
+src/generate-sdd-superpowers-tutorial.ts
+src/generate-superpowers-tutorial.ts
+src/demo-docx-helper.ts
+src/utils/docx-helper.ts
+generar-tutorial-word.ps1
