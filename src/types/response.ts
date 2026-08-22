@@ -1,10 +1,18 @@
 export interface HealthResponse {
-  status: string;
+  status: 'ok';
   timestamp: string;
 }
 
 export interface ReadyResponse {
-  status: string;
+  status: 'ready';
   uptime_seconds: number;
-  memory_mb: number;
+}
+
+export interface VersionResponse {
+  version: string;
+}
+
+export interface ErrorResponse {
+  error: string;
+  message?: string;
 }
