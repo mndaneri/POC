@@ -1,0 +1,38 @@
+---
+name: "ship"
+description: "Consolidar y entregar la sesión: verificación + code-review-excellence + session-handoff (gate de ship)"
+invokable: true
+---
+
+Consolidar y entregar la sesión: fase obligatoria antes de cualquier ship/handoff.
+
+**Cuándo**: siempre que queden cambios de código pendientes de cerrar, entregar o publicar.
+**Única excepción**: cambios solo de docs/config sin lógica de código — en ese caso, decirlo explícitamente y saltar al paso 5.
+
+**Steps**
+
+1. **Verificar — superpowers-verification-before-completion**
+   - Ejecutar los build/tests reales del proyecto (`npm test`, `npm run build`, `npx tsc --noEmit`) y confirmar verde.
+   - Prohibido: "debería pasar" sin ejecutarlo. Registrar comandos + exit codes.
+
+2. **Consolidar el diff (input único)**
+   - `git diff HEAD` (staged + unstaged) es el único input de revisión.
+   - Si el diff está vacío: pasar al paso 5 y reportarlo.
+
+3. **code-review-excellence (juez final neutral)**
+   - Invocar la skill `code-review-excellence` sobre el diff completo (no archivo a archivo).
+   - Seguir sus fases: contexto → arquitectura/diseño → línea a línea.
+   - Enfoque: mantenibilidad integral, fit arquitectónico, coherencia de diseño/API/naming — lo que los revisores atómicos (seguridad, SEO, naming) no ven.
+   - Salida obligatoria: Summary / Strengths / Required Changes 🔴 / Suggestions 💡 / Questions ❓ / **Verdict**.
+   - Prohibido en esta fase: SAST, pen-testing, análisis exhaustivo de vulnerabilidades (competencia de `security-reviewer`); bloquear por formato/lint/estilo subjetivo.
+
+4. **Gate (duro)**
+   - Cualquier 🔴 Required Change → NO handoff. Aplicar correcciones y re-ejecutar el paso 3 SOLO sobre el diff de correcciones.
+   - Veredicto ✅ → continuar.
+
+5. **session-handoff**
+   - Invocar la skill `session-handoff` para generar el handoff. Debe incluir: qué se construyó, change de OpenSpec asociado, veredicto de revisión, pendientes.
+
+6. **Memoria (MemPalace)**
+   - `mempalace_diary_write`: resumen de la sesión en AAAK.
+   - Si se archivó un change de OpenSpec: `mempalace_kg_add` con el hecho de cierre — puntero al `<change-id>`, NO duplicar el contenido de la spec.
